@@ -1,0 +1,254 @@
+/* =========================================
+   RESETEO BASE Y VARIABLES
+========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+:root {
+    --primary-blue: #005096;
+    --light-gray: #e9e9e9;
+    --border-color: #ddd;
+}
+
+/* =========================================
+   LAYOUT GENERAL MÓVIL (Mobile First)
+========================================= */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-areas:
+        "nav"
+        "filters"
+        "main"
+        "footer";
+    min-height: 100vh;
+}
+
+.navbar { grid-area: nav; }
+.filters { grid-area: filters; }
+.main-content { grid-area: main; }
+.footer { grid-area: footer; }
+
+/* =========================================
+   ESTILOS INTERNOS (Móvil)
+========================================= */
+
+/* 1. Navbar */
+.navbar {
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.hamburger {
+    cursor: pointer;
+    font-size: 2rem;
+}
+
+.nav-links {
+    display: none; /* Oculto en móvil */
+    list-style: none;
+}
+
+/* 2. Filtros */
+.filters {
+    background-color: var(--light-gray);
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.filter-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Alineado al centro */
+    width: 100%; /* Abarca toda la caja */
+}
+
+.filter-content label {
+    margin-bottom: 5px;
+    color: #333;
+    font-size: 0.9rem;
+    text-align: center; /* Texto "Ordenar por:" centrado */
+}
+
+.filter-content select {
+    width: 100%; 
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+}
+
+/* 3. Main (Productos) */
+.main-content {
+    padding: 30px 20px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.card {
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+}
+
+.card img {
+    width: 100%;
+    height: 180px; 
+    object-fit: contain; 
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    font-size: 1rem;
+    color: #000;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.card button {
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+/* Paginación */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 40px;
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.pagination .active {
+    font-weight: bold;
+    color: #000;
+}
+
+/* 4. Footer */
+.footer {
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    text-align: center; 
+    gap: 15px;
+}
+
+.socials {
+    display: flex;
+    gap: 15px;
+}
+
+.footer p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+
+/* =========================================
+   MEDIA QUERIES (ESCRITORIO: >= 576px)
+========================================= */
+
+@media (min-width: 576px) {
+    
+    .grid-container {
+        grid-template-columns: 220px 1fr; 
+        grid-template-rows: auto 1fr auto;
+        grid-template-areas:
+            "nav filters"
+            "nav main"
+            "footer main"; 
+    }
+
+    /* Modificamos Nav para alinearlo absolutamente al centro */
+    .navbar {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center; /* Alineado al centro absoluto */
+        padding: 40px 20px;
+    }
+
+    /* El logo queda con el ícono sobre el texto, igual a la maqueta */
+    .navbar .logo {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hamburger { display: none; }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Items centrados */
+        width: 100%;
+        margin-top: 50px;
+        gap: 25px;
+    }
+
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 1rem;
+    }
+
+    /* Aseguramos que la caja gris de filtros esté centrada */
+    .filters {
+        justify-content: center;
+    }
+
+    /* Grilla de productos a 2 columnas */
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* =========================================
+   OPCIONAL: BREAKPOINT PANTALLAS GRANDES (> 992px)
+========================================= */
+@media (min-width: 992px) {
+    .products-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
