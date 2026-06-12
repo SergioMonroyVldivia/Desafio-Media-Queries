@@ -6,7 +6,7 @@ El objetivo principal fue construir un layout responsivo, adaptando el diseño d
 
 # HLink a mi página
 
-- **Link a mi página**
+- **https://sergiomonroyvldivia.github.io/Desafio-Media-Queries/**
 
 # Herramientas utilizadas
 
